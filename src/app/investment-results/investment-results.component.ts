@@ -1,6 +1,7 @@
 import { Component, inject } from '@angular/core';
-import { InvestService } from '../shared/services/invest.service';
 import { CurrencyPipe } from '@angular/common';
+
+import { InvestService } from '../shared/services/invest.service';
 
 @Component({
   selector: 'app-investment-results',
@@ -11,5 +12,5 @@ import { CurrencyPipe } from '@angular/common';
 export class InvestmentResultsComponent {
   private investService = inject(InvestService);
 
-  resultsData = this.investService.getAnnualData();
+  resultsData = this.investService.getAnnualData().asReadonly();
 }
