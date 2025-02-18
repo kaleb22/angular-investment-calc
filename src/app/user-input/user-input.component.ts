@@ -1,5 +1,8 @@
-import { Component, signal } from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+
+import { InvestService } from '../shared/services/invest.service';
+import { Investment } from '../shared/interfaces/investment';
 
 @Component({
   selector: 'app-user-input',
@@ -8,10 +11,21 @@ import { FormsModule } from '@angular/forms';
   styleUrl: './user-input.component.scss',
 })
 export class UserInputComponent {
+  private investService = inject(InvestService);
+
   initialValue = signal('0');
-  anualValue = signal('0');
+  annualValue = signal('0');
   expectReturn = signal('6');
   duration = signal('10');
 
-  onSubmit() {}
+  onSubmit() {
+    const investData: Investment = {
+      initialInvestment: +this.initialValue(),
+      annualInvestment: +this.annualValue(),
+      expectedReturn: +this.expectReturn(),
+      duration: +this.duration(),
+    };
+
+    this.investService.calculateInvestmentResults(investData);
+  }
 }
