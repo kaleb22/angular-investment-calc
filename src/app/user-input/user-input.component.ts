@@ -2,7 +2,7 @@ import { Component, inject, signal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 
 import { InvestService } from '../shared/services/invest.service';
-import { Investment } from '../shared/interfaces/investment';
+import { InvestmentInput } from '../shared/interfaces/investment-input';
 
 @Component({
   selector: 'app-user-input',
@@ -19,7 +19,7 @@ export class UserInputComponent {
   duration = signal('10');
 
   onSubmit() {
-    const investData: Investment = {
+    const investData: InvestmentInput = {
       initialInvestment: +this.initialValue(),
       annualInvestment: +this.annualValue(),
       expectedReturn: +this.expectReturn(),
