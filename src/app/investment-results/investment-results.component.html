@@ -10,7 +10,7 @@
       <th>Capital Invested</th>
     </thead>
     <tbody>
-      @for (result of resultsData(); track $index) {
+      @for (result of resultsData(); track result.year) {
         <tr>
           <td>{{ result.year }}</td>
           <td>{{ result.valueEndOfYear | currency }}</td>
