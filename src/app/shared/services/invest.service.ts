@@ -31,10 +31,16 @@ export class InvestService {
         totalAmountInvested: initialInvestment + annualInvestment * year,
       });
     }
+
     this.annualData.set(this.results);
+    this.results = [];
   }
 
   getAnnualData() {
     return this.annualData;
+  }
+
+  resetInitialState() {
+    this.annualData.set([]);
   }
 }

@@ -27,10 +27,13 @@ export class UserInputComponent {
     };
 
     this.investService.calculateInvestmentResults(investData);
+  }
 
+  onReset() {
     this.initialValue.set('0');
     this.annualValue.set('0');
     this.expectReturn.set('6');
     this.duration.set('10');
+    this.investService.resetInitialState();
   }
 }
